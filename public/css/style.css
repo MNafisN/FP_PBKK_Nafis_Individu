@@ -1,0 +1,129 @@
+html, body
+{
+    height: 100%;
+	overflow: hidden;
+	font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+}
+
+.header {
+	display: block;
+	position: fixed;
+	width: 100%;
+	height: 100px;
+	background-image: url("../img/PJB.png");
+	background-size: 50% 100%;
+	z-index: 10;
+}
+.header-container {
+	display: inline-block;
+	height: 80px;
+	width: 44%;
+	line-height: 80px;
+	font-size: 50px;
+	color: white;
+	padding: 10px;
+	vertical-align: middle;
+	background-image: linear-gradient(to right, #072730, #020F14)
+}
+.content {
+	display: block;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-color: #40E0D0;
+	z-index: 0;
+}
+.content-midcontainer {
+	display: flex;
+	height: 100%;
+	align-items: center;
+	justify-content: center;
+	width: 30%;
+	margin: 0px auto;
+}
+.form-login {
+	height: auto;
+	background-color: white;
+	border: 5px solid #065F6F;
+	border-radius: 10px;
+	padding: 10px;
+}
+input[type=text], input[type=password], input[type=email], input[type=date], input[type=time], input[type=number] {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #065F6F;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+input[type=button], input[type=submit] {
+	width: 100%;
+	background-color: #065F6F;
+	border: 1px solid;
+	border-radius: 4px;
+	color: white;
+	padding: 12px 20px;
+	margin: 8px 0px;
+	text-decoration: none;
+	cursor: pointer;
+}
+a {
+	text-decoration: none;
+    color: inherit;
+}
+a:hover {
+	text-decoration: underline;
+}
+.main-container {
+    margin-top: 100px;
+    height: calc(100% - 100px);
+}
+.tab {
+    float: left;
+    border: 1px solid #ccc;
+    background-color: #FCFFFF;
+    width: 25%;
+    height: 100%;
+    border-top: none;
+    border-left: 1px solid #156E86;
+    border-right: 1px solid #156E86;
+    border-bottom: none;
+    overflow-y: auto;
+    box-shadow: 1px 0px 0px 0px #17a2b8; 
+}
+.tab button {
+    display: block;
+    background-color: inherit;
+    padding: 22px 16px;
+    width: 100%;
+    border-top: 1px solid #156E86;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 17px;
+}
+.tab button:hover {
+    transition: 0.5s;
+    background-color: #156E86;
+}
+.tab button.active {
+    background-color: #156E86;
+}
+.tabcontent {
+    position: absolute;
+    float: left;
+    margin-left: 25%;
+    width: 75%;
+    height: calc(100% - 100px);
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.tabcontent .container {
+    padding: 20px;
+}
+
+
