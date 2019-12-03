@@ -19,8 +19,8 @@
 					<label for="username">Username:</label>
 					{{ text_field('username') }}
 					<!-- <input type="text" id="username" name="username" required> -->
-					<label for="password">Password:</label>
-					{{ password_field('password') }}
+					<label for="pass">Password:</label>
+					{{ password_field('pass') }}
 					<!-- <input type="password" id="password" name="password" required> -->
 					{{ submit_button('Login') }}
 					<!-- <input type="submit" value="Login"> -->

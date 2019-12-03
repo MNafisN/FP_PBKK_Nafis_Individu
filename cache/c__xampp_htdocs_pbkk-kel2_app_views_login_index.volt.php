@@ -19,8 +19,8 @@
 					<label for="username">Username:</label>
 					<?= $this->tag->textField(['username']) ?>
 					<!-- <input type="text" id="username" name="username" required> -->
-					<label for="password">Password:</label>
-					<?= $this->tag->passwordField(['password']) ?>
+					<label for="pass">Password:</label>
+					<?= $this->tag->passwordField(['pass']) ?>
 					<!-- <input type="password" id="password" name="password" required> -->
 					<?= $this->tag->submitButton(['Login']) ?>
 					<!-- <input type="submit" value="Login"> -->

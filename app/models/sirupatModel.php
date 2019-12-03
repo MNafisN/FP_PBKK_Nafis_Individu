@@ -10,8 +10,12 @@ class sirupatModel extends Model
         $this->setSource('sirupat_user');
     }
 
+    public $id_user;
     public $username;
-    public $password;
+    public $email;
+    public $pass;
+    public $nama_pegawai;
+    public $user_role;
 
 /*    public function auth($username, $password)
     {

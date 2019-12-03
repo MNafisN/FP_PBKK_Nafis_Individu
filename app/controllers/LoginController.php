@@ -23,7 +23,7 @@ class LoginController extends ControllerBase
         $queryLogin = sirupatModel::findFirstByUsername($username);
         // $queryLogin2 = sirupatModel::findFirstByPass($pass);
         
-        if ($queryLogin)
+        if ($pass == $queryLogin->pass)
         {
             $this->session->set('login', ['username' => $queryLogin->username]);
             // $this->view->admin = sirupatModel::findFirstByUsername($username);
@@ -31,7 +31,8 @@ class LoginController extends ControllerBase
         }
         elseif (!$queryLogin)            
         {
-            $this->view = var_dump($queryLogin);
+            echo 'wrong';
+            return false;
         }
         
         // $name = sirupatModel::find(2);
