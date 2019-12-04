@@ -126,4 +126,17 @@ a:hover {
     padding: 20px;
 }
 
-
+.alert {
+	width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+	display: inline-block;
+    border-radius: 4px;
+	box-sizing: border-box;
+}
+.alert.alert-danger {
+	background-color: rgba(232, 142, 137, 0.5);
+}
+.alert.alert-success, .alert.alert-info {
+	background-color: rgba(140, 203, 222, 0.5);
+}

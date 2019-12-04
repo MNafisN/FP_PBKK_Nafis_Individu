@@ -13,28 +13,30 @@
 	<div class="content">
         <div class="main-container">
             <div class="tab">
-                    <div style="text-align: center; padding: 10px 0px">
-                        Selamat datang, {{ session.get('login')['username'] }}
-                    </div>
-                    <a href="{{ url('/index') }}"><button class="active">Reservasi</button></a>
-                    <button>Ruang Rapat</button>
-                    <button>Fasilitas</button>
-                    <button>Konsumsi</button>
-                    <button>Vendor</button>
-                    <div style="bottom: 0px; width: inherit; position: absolute">
-                        <form action="{{ url('/index/logout') }}" method="post">
-                            <button>Logout</button>
-                        </form>
-                    </div>
+                <div style="text-align: center; padding: 10px 0px">
+                    Selamat datang, {{ session.get('login')['username'] }}
                 </div>
+                <a href="{{ url('/index') }}"><button class="active">Reservasi</button></a>
+                <button>Ruang Rapat</button>
+                <button>Fasilitas</button>
+                <button>Konsumsi</button>
+                <button>Vendor</button>
+                <div style="bottom: 0px; width: inherit; position: absolute">
+                    <form action="{{ url('/index/logout') }}" method="post">
+                        <button>Logout</button>
+                    </form>
+                </div>
+            </div>
+
             <div class="tabcontent">
                 <div class="container">
                     <div class="card">
                         <h2 class="card-header">Form Reservasi</h2>
                         <div class="content-midcontainer" style="width: 50%!important">
                         <div class="form-login">
+                            {{ flashSession.output() }}
                             {{ javascript_include('js/query.js') }}
-                            {{ form('index/save', 'name': 'reservasi', 'method': 'post', 'onSubmit': 'return validateForm2()') }}
+                            {{ form('index/save', 'name': 'reservasi', 'method': 'post') }}
                             
                                 <label for="no_surat">No. Surat:</label>
                                 {{ text_field('no_surat', 'placeholder': 'Masukkan nomor surat', 'max-length': 10, 'required') }}

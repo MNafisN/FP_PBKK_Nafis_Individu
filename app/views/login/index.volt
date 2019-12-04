@@ -13,19 +13,17 @@
 		<div class="content-midcontainer">
 			<div class="form-login">
 				<p style="text-align: center;"><b>Sistem Informasi Peminjaman Ruang Rapat</b></p>
-				
+				{{ flashSession.output() }}
 				{{ form('login/check', 'method': 'post') }}
-				<!-- <form name="login" method="post" action="login_authentication.php"> -->
 					<label for="username">Username:</label>
 					{{ text_field('username') }}
-					<!-- <input type="text" id="username" name="username" required> -->
+
 					<label for="pass">Password:</label>
 					{{ password_field('pass') }}
-					<!-- <input type="password" id="password" name="password" required> -->
+
 					{{ submit_button('Login') }}
-					<!-- <input type="submit" value="Login"> -->
 					<br>
-				<!-- </form> -->
+				{{ end_form() }}
 			</div>
 		</div>
 	</div>

@@ -13,8 +13,6 @@ class LoginController extends ControllerBase
     {
         $this->assets->addCss('css/style.css');
         $this->assets->addCss('css/table.css');
-        // $username = $this->request->getPost('username');
-        // $password = $this->request->getPost('pass');
         
         $username = $this->request->getPost('username');
         $password = $this->request->getPost('pass');
@@ -31,25 +29,8 @@ class LoginController extends ControllerBase
         }
         elseif (!$queryLogin)            
         {
-            echo 'wrong';
-            return false;
+            $this->flashSession->error('Username dan password tidak cocok');
+            return $this->response->redirect('/login');
         }
-        
-        // $name = sirupatModel::find(2);
-        // var_dump($name);
-        
-        // $this->view->admin = sirupatModel::findFirstByUsername($username);
-
-        // $login = new sirupatModel();
-        // $login->auth($username, $password);
-        // var_dump($login);
-        // $this->view->login;
-        
-        // $this->view->admin = sirupatModel::findFirst(
-        //     [
-        //         "username = ",
-        //     ]
-        //     );
     }
-    
 }

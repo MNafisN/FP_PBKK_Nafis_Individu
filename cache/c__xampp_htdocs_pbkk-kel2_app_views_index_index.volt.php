@@ -26,12 +26,13 @@
                         <button>Logout</button>
                     </form>
                 </div>
-            </div>  
+            </div>
+
             <div class="tabcontent">
                 <div class="container">
                     <div class="card">
                     <?php if (isset($reservasi)) { ?>
-                        <h3 class="card-header">Upcoming Events</h3>
+                        <h3 class="card-header">Daftar Reservasi</h3>
                         <table class="table table-bordered table-responsive-sm" id="calendar">
                             <thead>
                                 <tr>
@@ -46,9 +47,22 @@
                                         <?php foreach ($users as $user) { ?>
                                             <?php if ($ruang->id_ruangan == $reserve->id_ruangan && $user->id_user == $reserve->id_peminjam) { ?>
                                 <tr>
-                                    <td><?= $reserve->nama_agenda ?></td>
-                                    <td><?= $user->nama_pegawai ?></td>
-                                    <td><?= $ruang->nama_ruangan ?></td>
+                                    <?= $this->tag->form(['index/detail', 'method' => 'post']) ?>
+                                    <td>
+                                        <?= $this->tag->hiddenField(['no_surat', 'value' => $reserve->no_surat]) ?>
+                                        <?= $this->tag->submitButton([$reserve->nama_agenda, 'style' => 'all: unset; cursor: pointer']) ?>
+                                    </td>
+                                    
+                                    <td>
+                                        <?= $this->tag->hiddenField(['id_peminjam', 'value' => $user->id_user]) ?>
+                                        <?= $user->nama_pegawai ?>
+                                    </td>
+                                    
+                                    <td>
+                                        <?= $this->tag->hiddenField(['id_ruangan', 'value' => $ruang->id_ruangan]) ?>
+                                        <?= $ruang->nama_ruangan ?>
+                                    </td>
+                                    <?= $this->tag->endForm() ?>
                                 </tr> 
                                             <?php } ?>
                                         <?php } ?>

@@ -13,19 +13,17 @@
 		<div class="content-midcontainer">
 			<div class="form-login">
 				<p style="text-align: center;"><b>Sistem Informasi Peminjaman Ruang Rapat</b></p>
-				
+				<?= $this->flashSession->output() ?>
 				<?= $this->tag->form(['login/check', 'method' => 'post']) ?>
-				<!-- <form name="login" method="post" action="login_authentication.php"> -->
 					<label for="username">Username:</label>
 					<?= $this->tag->textField(['username']) ?>
-					<!-- <input type="text" id="username" name="username" required> -->
+
 					<label for="pass">Password:</label>
 					<?= $this->tag->passwordField(['pass']) ?>
-					<!-- <input type="password" id="password" name="password" required> -->
+
 					<?= $this->tag->submitButton(['Login']) ?>
-					<!-- <input type="submit" value="Login"> -->
 					<br>
-				<!-- </form> -->
+				<?= $this->tag->endForm() ?>
 			</div>
 		</div>
 	</div>

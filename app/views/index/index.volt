@@ -26,12 +26,13 @@
                         <button>Logout</button>
                     </form>
                 </div>
-            </div>  
+            </div>
+
             <div class="tabcontent">
                 <div class="container">
                     <div class="card">
                     {% if reservasi is defined %}
-                        <h3 class="card-header">Upcoming Events</h3>
+                        <h3 class="card-header">Daftar Reservasi</h3>
                         <table class="table table-bordered table-responsive-sm" id="calendar">
                             <thead>
                                 <tr>
@@ -46,9 +47,22 @@
                                         {% for user in users %}
                                             {% if ruang.id_ruangan is reserve.id_ruangan and user.id_user is reserve.id_peminjam %}
                                 <tr>
-                                    <td>{{ reserve.nama_agenda }}</td>
-                                    <td>{{ user.nama_pegawai }}</td>
-                                    <td>{{ ruang.nama_ruangan }}</td>
+                                    {{ form('index/detail', 'method': 'post') }}
+                                    <td>
+                                        {{ hidden_field('no_surat', 'value': reserve.no_surat) }}
+                                        {{ submit_button(reserve.nama_agenda, 'style': 'all: unset; cursor: pointer') }}
+                                    </td>
+                                    
+                                    <td>
+                                        {{ hidden_field('id_peminjam', 'value': user.id_user) }}
+                                        {{ user.nama_pegawai }}
+                                    </td>
+                                    
+                                    <td>
+                                        {{ hidden_field('id_ruangan', 'value': ruang.id_ruangan) }}
+                                        {{ ruang.nama_ruangan }}
+                                    </td>
+                                    {{ end_form() }}
                                 </tr> 
                                             {% endif %}
                                         {% endfor %}
