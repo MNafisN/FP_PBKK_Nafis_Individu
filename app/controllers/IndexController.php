@@ -77,6 +77,19 @@ class IndexController extends ControllerBase
             }
             return 'OK';
         }
+        function cekDateTime($date_awal, $time_awal, $date_akhir, $time_akhir) {
+            if ($date_awal == '' || $time_awal == '' || $date_akhir == '' || $time_akhir == '') {
+                return 'time_null';
+            }
+            return 'OK';
+        }
+        if ($is_null == 'time_null') {
+            $this->flashSession->error('Waktu kosong');
+            return $this->response->redirect('/index/form');
+        }
+        $is_null = cekDateTime($date_awal, $time_awal, $date_akhir, $time_akhir);
+        // echo $is_null; return false;
+
         // $now = date("Y-m-d H:i:s");
         // $date = new \DateTime($waktu_awal);
         // $date2 = date($waktu_awal);
@@ -103,9 +116,8 @@ class IndexController extends ControllerBase
         }
         $is_crash = cekCrash($reserved, $waktu_awal, $waktu_akhir);
         $cek = cekInput($waktu_awal, $waktu_akhir, 'now', $ruangan, $jumlah_peserta, $is_crash);
-        // echo $cek; return false;
-        // return false;
 
+        
         if ($cek == 'past_time') {
             $this->flashSession->error('Waktu telah berlalu');
             return $this->response->redirect('/index/form');
