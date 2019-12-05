@@ -17,7 +17,7 @@
                     Selamat datang, {{ session.get('login')['username'] }}
                 </div>
                 <a href="{{ url('/index') }}"><button class="active">Reservasi</button></a>
-                <button>Ruang Rapat</button>
+                <a href="{{ url('/ruangan') }}"><button>Ruang Rapat</button></a>
                 <button>Fasilitas</button>
                 <button>Konsumsi</button>
                 <button>Vendor</button>

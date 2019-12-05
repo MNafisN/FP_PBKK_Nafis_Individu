@@ -16,8 +16,8 @@
                 <div style="text-align: center; padding: 10px 0px">
                     Selamat datang, <?= $this->session->get('login')['username'] ?>
                 </div>
-                <a href="<?= $this->url->get('/index') ?>"><button class="active">Reservasi</button></a>
-                <a href="<?= $this->url->get('/ruangan') ?>"><button>Ruang Rapat</button></a>
+                <a href="<?= $this->url->get('/index') ?>"><button>Reservasi</button></a>
+                <a href="<?= $this->url->get('/ruangan') ?>"><button class="active">Ruang Rapat</button></a>
                 <button>Fasilitas</button>
                 <button>Konsumsi</button>
                 <button>Vendor</button>
@@ -31,47 +31,34 @@
             <div class="tabcontent">
                 <div class="container">
                     <div class="card">
-                    <?php if (isset($reservasi)) { ?>
+                    <?php if (isset($ruangan)) { ?>
                         <h3 class="card-header">Daftar Reservasi</h3>
                         <table class="table table-bordered table-responsive-sm" id="calendar">
                             <thead>
                                 <tr>
-                                    <th> Judul Agenda </th>
-                                    <th> Peminjam </th>
-                                    <th> Ruangan </th>
+                                    <th> Nama Ruangan </th>
+                                    <th> Lokasi </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($reservasi as $reserve) { ?>
-                                    <?php foreach ($ruangan as $ruang) { ?>
-                                        <?php foreach ($users as $user) { ?>
-                                            <?php if ($ruang->id_ruangan == $reserve->id_ruangan && $user->id_user == $reserve->id_peminjam) { ?>
+                                <?php foreach ($ruangan as $ruang) { ?>
                                 <tr>
-                                    <?= $this->tag->form(['index/detail', 'method' => 'post']) ?>
-                                    <td>
-                                        <?= $this->tag->hiddenField(['no_surat', 'value' => $reserve->no_surat]) ?>
-                                        <?= $this->tag->submitButton([$reserve->nama_agenda, 'style' => 'all: unset; cursor: pointer']) ?>
-                                    </td>
-                                    
-                                    <td>
-                                        <?= $this->tag->hiddenField(['id_peminjam', 'value' => $user->id_user]) ?>
-                                        <?= $user->nama_pegawai ?>
-                                    </td>
-                                    
+                                    <?= $this->tag->form(['ruangan/detail', 'method' => 'post']) ?>
                                     <td>
                                         <?= $this->tag->hiddenField(['id_ruangan', 'value' => $ruang->id_ruangan]) ?>
-                                        <?= $ruang->nama_ruangan ?>
+                                        <?= $this->tag->submitButton([$ruang->nama_ruangan, 'style' => 'all: unset; cursor: pointer']) ?>
+                                    </td>
+                                    
+                                    <td>
+                                        <?= $ruang->lokasi_ruangan ?>
                                     </td>
                                     <?= $this->tag->endForm() ?>
                                 </tr> 
-                                            <?php } ?>
-                                        <?php } ?>
-                                    <?php } ?>
                                 <?php } ?>
                             </tbody>
                         </table>
-                        <a href="<?= $this->url->get('/index/form') ?>">
-                            <button class="btn2">Buat Reservasi Baru</button>
+                        <a href="<?= $this->url->get('/ruangan/form') ?>">
+                            <button class="btn2">Buat Data Ruangan Baru</button>
                         </a>
                     </div>
                     <?php } ?>

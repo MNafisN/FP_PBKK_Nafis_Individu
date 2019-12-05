@@ -16,8 +16,8 @@
                 <div style="text-align: center; padding: 10px 0px">
                     Selamat datang, {{ session.get('login')['username'] }}
                 </div>
-                <a href="{{ url('/index') }}"><button class="active">Reservasi</button></a>
-                <a href="{{ url('/ruangan') }}"><button>Ruang Rapat</button></a>
+                <a href="{{ url('/index') }}"><button>Reservasi</button></a>
+                <a href="{{ url('/ruangan') }}"><button class="active">Ruang Rapat</button></a>
                 <button>Fasilitas</button>
                 <button>Konsumsi</button>
                 <button>Vendor</button>
@@ -31,47 +31,34 @@
             <div class="tabcontent">
                 <div class="container">
                     <div class="card">
-                    {% if reservasi is defined %}
+                    {% if ruangan is defined %}
                         <h3 class="card-header">Daftar Reservasi</h3>
                         <table class="table table-bordered table-responsive-sm" id="calendar">
                             <thead>
                                 <tr>
-                                    <th> Judul Agenda </th>
-                                    <th> Peminjam </th>
-                                    <th> Ruangan </th>
+                                    <th> Nama Ruangan </th>
+                                    <th> Lokasi </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for reserve in reservasi %}
-                                    {% for ruang in ruangan %}
-                                        {% for user in users %}
-                                            {% if ruang.id_ruangan is reserve.id_ruangan and user.id_user is reserve.id_peminjam %}
+                                {% for ruang in ruangan %}
                                 <tr>
-                                    {{ form('index/detail', 'method': 'post') }}
-                                    <td>
-                                        {{ hidden_field('no_surat', 'value': reserve.no_surat) }}
-                                        {{ submit_button(reserve.nama_agenda, 'style': 'all: unset; cursor: pointer') }}
-                                    </td>
-                                    
-                                    <td>
-                                        {{ hidden_field('id_peminjam', 'value': user.id_user) }}
-                                        {{ user.nama_pegawai }}
-                                    </td>
-                                    
+                                    {{ form('ruangan/detail', 'method': 'post') }}
                                     <td>
                                         {{ hidden_field('id_ruangan', 'value': ruang.id_ruangan) }}
-                                        {{ ruang.nama_ruangan }}
+                                        {{ submit_button(ruang.nama_ruangan, 'style': 'all: unset; cursor: pointer') }}
+                                    </td>
+                                    
+                                    <td>
+                                        {{ ruang.lokasi_ruangan }}
                                     </td>
                                     {{ end_form() }}
                                 </tr> 
-                                            {% endif %}
-                                        {% endfor %}
-                                    {% endfor %}
                                 {% endfor %}
                             </tbody>
                         </table>
-                        <a href="{{ url('/index/form') }}">
-                            <button class="btn2">Buat Reservasi Baru</button>
+                        <a href="{{ url('/ruangan/form') }}">
+                            <button class="btn2">Buat Data Ruangan Baru</button>
                         </a>
                     </div>
                     {% endif %}
