@@ -18,7 +18,7 @@
                 </div>
                 <a href="{{ url('/index') }}"><button class="active">Reservasi</button></a>
                 <a href="{{ url('/ruangan') }}"><button>Ruang Rapat</button></a>
-                <button>Fasilitas</button>
+                <a href="{{ url('/fasilitas') }}"><button>Fasilitas</button></a>
                 <button>Konsumsi</button>
                 <button>Vendor</button>
                 <div style="bottom: 0px; width: inherit; position: absolute">
@@ -31,7 +31,7 @@
             <div class="tabcontent">
                 <div class="container">
                     <div class="card">
-                        <h2 class="card-header">Rincian Agenda</h2>
+                        <h2 class="card-header">Detail Reservasi</h2>
                         {{ flashSession.output() }}
                         <ul class="list-group">
 
@@ -94,7 +94,7 @@
                             <div style="display: block; width: max-content; float: right">
                                 {{ form('index/delete', 'method': 'post', 'style': 'margin-block-end: 0px', 'onSubmit': 'return validateForm3()') }}
                                     {{ hidden_field('no_surat', 'value': reservasi.no_surat) }}
-                                    {{ submit_button('Batalkan', 'style': 'width: auto; float: right; margin: 0px') }}
+                                    {{ submit_button('Batalkan Reservasi', 'style': 'width: auto; float: right; margin: 0px') }}
                                 {{ end_form() }}
                             </div>
                         </div>
