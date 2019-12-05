@@ -83,11 +83,11 @@ class IndexController extends ControllerBase
             }
             return 'OK';
         }
+        $is_null = cekDateTime($date_awal, $time_awal, $date_akhir, $time_akhir);
         if ($is_null == 'time_null') {
             $this->flashSession->error('Waktu kosong');
             return $this->response->redirect('/index/form');
         }
-        $is_null = cekDateTime($date_awal, $time_awal, $date_akhir, $time_akhir);
         // echo $is_null; return false;
 
         // $now = date("Y-m-d H:i:s");
