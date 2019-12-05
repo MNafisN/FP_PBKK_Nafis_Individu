@@ -189,6 +189,28 @@ class IndexController extends ControllerBase
             $this->response->redirect('/login');
         }
     }
+    public function deleteAction() 
+    {
+        $no_surat = $this->request->getPost('no_surat');
+        $reservasi = reservasiModel::findFirstByNo_surat($no_surat);
+
+        if ($reservasi !== false) {
+            if ($reservasi->delete() === false)
+            {
+                $messages = $reservasi->getMessages();
+        
+                foreach ($messages as $message) {
+                    $this->flashSession->error($message);
+                }
+            
+                return $this->response->redirect('/index/detail');
+            } 
+            else 
+            {
+                return $this->response->redirect('/index');
+            }
+        }
+    }
 
 
 

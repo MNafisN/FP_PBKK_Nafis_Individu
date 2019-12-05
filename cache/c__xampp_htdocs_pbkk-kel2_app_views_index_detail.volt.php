@@ -32,6 +32,7 @@
                 <div class="container">
                     <div class="card">
                         <h2 class="card-header">Rincian Agenda</h2>
+                        <?= $this->flashSession->output() ?>
                         <ul class="list-group">
 
                             <li class="list-group-item">
@@ -85,10 +86,18 @@
                             </li>
 
                         </ul>
-
-                        <a href="<?= $this->url->get('/index') ?>">
-                            <button class="btn2">Kembali</button>
-                        </a>
+                        
+                        <div class="card-footer">
+                            <div style="display: inline-block; width: max-content">
+                                <a href="<?= $this->url->get('/index') ?>"><button class="btn2">Kembali</button></a>
+                            </div>
+                            <div style="display: block; width: max-content; float: right">
+                                <?= $this->tag->form(['index/delete', 'method' => 'post', 'style' => 'margin-block-end: 0px', 'onSubmit' => 'return validateForm3()']) ?>
+                                    <?= $this->tag->hiddenField(['no_surat', 'value' => $reservasi->no_surat]) ?>
+                                    <?= $this->tag->submitButton(['Batalkan', 'style' => 'width: auto; float: right; margin: 0px']) ?>
+                                <?= $this->tag->endForm() ?>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

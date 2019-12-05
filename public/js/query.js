@@ -12,3 +12,7 @@ function validateForm2() {
         alert("Register success!")
     }
 }
+
+function validateForm3() {
+    alert("Data berhasil dihapus");
+}

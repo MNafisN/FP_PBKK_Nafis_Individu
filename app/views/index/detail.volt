@@ -32,6 +32,7 @@
                 <div class="container">
                     <div class="card">
                         <h2 class="card-header">Rincian Agenda</h2>
+                        {{ flashSession.output() }}
                         <ul class="list-group">
 
                             <li class="list-group-item">
@@ -85,10 +86,18 @@
                             </li>
 
                         </ul>
-
-                        <a href="{{ url('/index') }}">
-                            <button class="btn2">Kembali</button>
-                        </a>
+                        
+                        <div class="card-footer">
+                            <div style="display: inline-block; width: max-content">
+                                <a href="{{ url('/index') }}"><button class="btn2">Kembali</button></a>
+                            </div>
+                            <div style="display: block; width: max-content; float: right">
+                                {{ form('index/delete', 'method': 'post', 'style': 'margin-block-end: 0px', 'onSubmit': 'return validateForm3()') }}
+                                    {{ hidden_field('no_surat', 'value': reservasi.no_surat) }}
+                                    {{ submit_button('Batalkan', 'style': 'width: auto; float: right; margin: 0px') }}
+                                {{ end_form() }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
