@@ -19,8 +19,8 @@
                 <a href="{{ url('/index') }}"><button>Reservasi</button></a>
                 <a href="{{ url('/ruangan') }}"><button>Ruang Rapat</button></a>
                 <a href="{{ url('/fasilitas') }}"><button class="active">Fasilitas</button></a>
-                <button>Konsumsi</button>
-                <button>Vendor</button>
+                <a href="{{ url('/makanan') }}"><button>Konsumsi</button></a>
+                <a href="{{ url('/vendor') }}"><button>Vendor</button></a>
                 <div style="bottom: 0px; width: inherit; position: absolute">
                     <form action="{{ url('/index/logout') }}" method="post">
                         <button>Logout</button>

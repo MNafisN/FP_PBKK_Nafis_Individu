@@ -18,7 +18,7 @@
                 </div>
                 <a href="<?= $this->url->get('/index') ?>"><button class="active">Reservasi</button></a>
                 <a href="<?= $this->url->get('/ruangan') ?>"><button>Ruang Rapat</button></a>
-                <button>Fasilitas</button>
+                <a href="<?= $this->url->get('/fasilitas') ?>"><button>Fasilitas</button></a>
                 <button>Konsumsi</button>
                 <button>Vendor</button>
                 <div style="bottom: 0px; width: inherit; position: absolute">

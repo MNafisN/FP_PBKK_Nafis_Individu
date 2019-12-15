@@ -17,10 +17,10 @@
                     Selamat datang, <?= $this->session->get('login')['username'] ?>
                 </div>
                 <a href="<?= $this->url->get('/index') ?>"><button>Reservasi</button></a>
-                <a href="<?= $this->url->get('/ruangan') ?>"><button class="active">Ruang Rapat</button></a>
+                <a href="<?= $this->url->get('/ruangan') ?>"><button>Ruang Rapat</button></a>
                 <a href="<?= $this->url->get('/fasilitas') ?>"><button>Fasilitas</button></a>
-                <button>Konsumsi</button>
-                <button>Vendor</button>
+                <a href="<?= $this->url->get('/makanan') ?>"><button class="active">Konsumsi</button class="active"></a>
+                <a href="<?= $this->url->get('/vendor') ?>"><button>Vendor</button></a>
                 <div style="bottom: 0px; width: inherit; position: absolute">
                     <form action="<?= $this->url->get('/index/logout') ?>" method="post">
                         <button>Logout</button>
@@ -31,34 +31,39 @@
             <div class="tabcontent">
                 <div class="container">
                     <div class="card">
-                    <?php if (isset($ruangan)) { ?>
-                        <h3 class="card-header">Daftar Ruangan</h3>
+                    <?php if (isset($makanan)) { ?>
+                        <h3 class="card-header">Daftar Konsumsi</h3>
                         <table class="table table-bordered table-responsive-sm" id="calendar">
                             <thead>
                                 <tr>
-                                    <th> Nama Ruangan </th>
-                                    <th> Lokasi </th>
+                                    <th> Nama Makanan </th>
+                                    <th> Nama Vendor </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($ruangan as $ruang) { ?>
+                                <?php foreach ($makanan as $makan) { ?>
+                                    <?php foreach ($vendor as $vend) { ?>
+                                        <?php if ($vend->id_vendor == $makan->id_vendor) { ?>
                                 <tr>
-                                    <?= $this->tag->form(['ruangan/detail', 'method' => 'post']) ?>
+                                    <?= $this->tag->form(['makanan/detail', 'method' => 'post']) ?>
                                     <td>
-                                        <?= $this->tag->hiddenField(['id_ruangan', 'value' => $ruang->id_ruangan]) ?>
-                                        <?= $this->tag->submitButton([$ruang->nama_ruangan, 'style' => 'all: unset; cursor: pointer']) ?>
+                                        <?= $this->tag->hiddenField(['id_makanan', 'value' => $makan->id_makanan]) ?>
+                                        <?= $this->tag->submitButton([$makan->nama_makanan, 'style' => 'all: unset; cursor: pointer']) ?>
                                     </td>
                                     
                                     <td>
-                                        <?= $ruang->lokasi_ruangan ?>
+                                        <?= $this->tag->hiddenField(['id_vendor', 'value' => $vend->id_vendor]) ?>
+                                        <?= $vend->nama_vendor ?>
                                     </td>
                                     <?= $this->tag->endForm() ?>
-                                </tr> 
+                                </tr>
+                                        <?php } ?>
+                                    <?php } ?> 
                                 <?php } ?>
                             </tbody>
                         </table>
-                        <a href="<?= $this->url->get('/ruangan/form') ?>">
-                            <button class="btn2">Buat Data Ruangan Baru</button>
+                        <a href="<?= $this->url->get('/makanan/form') ?>">
+                            <button class="btn2">Buat Data Konsumsi Baru</button>
                         </a>
                     </div>
                     <?php } ?>

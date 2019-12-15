@@ -18,7 +18,7 @@
                 </div>
                 <a href="<?= $this->url->get('/index') ?>"><button class="active">Reservasi</button></a>
                 <a href="<?= $this->url->get('/ruangan') ?>"><button>Ruang Rapat</button></a>
-                <button>Fasilitas</button>
+                <a href="<?= $this->url->get('/fasilitas') ?>"><button>Fasilitas</button></a>
                 <button>Konsumsi</button>
                 <button>Vendor</button>
                 <div style="bottom: 0px; width: inherit; position: absolute">
@@ -31,7 +31,7 @@
             <div class="tabcontent">
                 <div class="container">
                     <div class="card">
-                        <h2 class="card-header">Rincian Agenda</h2>
+                        <h2 class="card-header">Detail Reservasi</h2>
                         <?= $this->flashSession->output() ?>
                         <ul class="list-group">
 
@@ -94,7 +94,7 @@
                             <div style="display: block; width: max-content; float: right">
                                 <?= $this->tag->form(['index/delete', 'method' => 'post', 'style' => 'margin-block-end: 0px', 'onSubmit' => 'return validateForm3()']) ?>
                                     <?= $this->tag->hiddenField(['no_surat', 'value' => $reservasi->no_surat]) ?>
-                                    <?= $this->tag->submitButton(['Batalkan', 'style' => 'width: auto; float: right; margin: 0px']) ?>
+                                    <?= $this->tag->submitButton(['Batalkan Reservasi', 'style' => 'width: auto; float: right; margin: 0px']) ?>
                                 <?= $this->tag->endForm() ?>
                             </div>
                         </div>

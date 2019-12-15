@@ -1,6 +1,7 @@
 <?php
 
 use Models\reservasiModel;
+use Models\makanreserModel;
 use Models\ruanganModel;
 use Models\sirupatModel;
 

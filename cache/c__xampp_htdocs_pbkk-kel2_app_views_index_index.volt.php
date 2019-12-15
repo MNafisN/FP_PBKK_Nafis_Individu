@@ -18,9 +18,9 @@
                 </div>
                 <a href="<?= $this->url->get('/index') ?>"><button class="active">Reservasi</button></a>
                 <a href="<?= $this->url->get('/ruangan') ?>"><button>Ruang Rapat</button></a>
-                <button>Fasilitas</button>
-                <button>Konsumsi</button>
-                <button>Vendor</button>
+                <a href="<?= $this->url->get('/fasilitas') ?>"><button>Fasilitas</button></a>
+                <a href="<?= $this->url->get('/makanan') ?>"><button>Konsumsi</button></a>
+                <a href="<?= $this->url->get('/vendor') ?>"><button>Vendor</button></a>
                 <div style="bottom: 0px; width: inherit; position: absolute">
                     <form action="<?= $this->url->get('/index/logout') ?>" method="post">
                         <button>Logout</button>

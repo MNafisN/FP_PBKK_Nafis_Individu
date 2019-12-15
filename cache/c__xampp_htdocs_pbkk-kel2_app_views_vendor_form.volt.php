@@ -18,9 +18,9 @@
                 </div>
                 <a href="<?= $this->url->get('/index') ?>"><button>Reservasi</button></a>
                 <a href="<?= $this->url->get('/ruangan') ?>"><button>Ruang Rapat</button></a>
-                <a href="<?= $this->url->get('/fasilitas') ?>"><button class="active">Fasilitas</button></a>
+                <a href="<?= $this->url->get('/fasilitas') ?>"><button>Fasilitas</button></a>
                 <a href="<?= $this->url->get('/makanan') ?>"><button>Konsumsi</button></a>
-                <a href="<?= $this->url->get('/vendor') ?>"><button>Vendor</button></a>
+                <a href="<?= $this->url->get('/vendor') ?>"><button class="active">Vendor</button class="active"></a>
                 <div style="bottom: 0px; width: inherit; position: absolute">
                     <form action="<?= $this->url->get('/index/logout') ?>" method="post">
                         <button>Logout</button>
@@ -31,20 +31,23 @@
             <div class="tabcontent">
                 <div class="container">
                     <div class="card">
-                        <h2 class="card-header">Form Fasilitas</h2>
+                        <h2 class="card-header">Form Data Vendor</h2>
                         <div class="content-midcontainer" style="width: 50%!important">
                         <div class="form-login">
                             <?= $this->flashSession->output() ?>
-                            <?= $this->tag->form(['fasilitas/save', 'name' => 'fasilitas', 'method' => 'post']) ?>
+                            <?= $this->tag->form(['vendor/save', 'name' => 'vendor', 'method' => 'post']) ?>
                             
-                                <label for="nama_fasilitas">Nama Fasilitas:</label>
-                                <?= $this->tag->textField(['nama_fasilitas', 'placeholder' => 'Masukkan nama fasilitas', 'required']) ?>
+                                <label for="nama_vendor">Nama Vendor:</label>
+                                <?= $this->tag->textField(['nama_vendor', 'placeholder' => 'Masukkan nama vendor', 'required']) ?>
 
-                                <label for="id_ruangan">Nama Ruangan:</label>
-                                <?= $this->tag->select(['id_ruangan', $ruangan, 'using' => ['id_ruangan', 'nama_ruangan'], 'class' => 'form-control col-sm-4', 'style' => 'width: 100%; margin: 8px 0px']) ?>
+                                <label for="email_vendor">Email Vendor:</label>
+                                <?= $this->tag->textField(['email_vendor', 'placeholder' => 'Masukkan email vendor']) ?>
 
-                                <label for="spesifikasi">Spesifikasi Fasilitas:</label>
-                                <?= $this->tag->textField(['spesifikasi', 'placeholder' => 'Masukkan spesifikasi fasilitas', 'required']) ?>
+                                <label for="alamat_vendor">Alamat Vendor:</label>
+                                <?= $this->tag->textField(['alamat_vendor', 'placeholder' => 'Masukkan alamat vendor']) ?>
+
+                                <label for="no_telp">Nomor Telepon Vendor:</label>
+                                <?= $this->tag->textField(['no_telp', 'placeholder' => 'Masukkan nomor telepon vendor']) ?>
 
                                 <?= $this->tag->submitButton(['Confirm']) ?>
 

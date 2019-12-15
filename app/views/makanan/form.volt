@@ -18,8 +18,8 @@
                 </div>
                 <a href="{{ url('/index') }}"><button>Reservasi</button></a>
                 <a href="{{ url('/ruangan') }}"><button>Ruang Rapat</button></a>
-                <a href="{{ url('/fasilitas') }}"><button class="active">Fasilitas</button></a>
-                <a href="{{ url('/makanan') }}"><button>Konsumsi</button></a>
+                <a href="{{ url('/fasilitas') }}"><button>Fasilitas</button></a>
+                <a href="{{ url('/makanan') }}"><button class="active">Konsumsi</button></a>
                 <a href="{{ url('/vendor') }}"><button>Vendor</button></a>
                 <div style="bottom: 0px; width: inherit; position: absolute">
                     <form action="{{ url('/index/logout') }}" method="post">
@@ -31,20 +31,20 @@
             <div class="tabcontent">
                 <div class="container">
                     <div class="card">
-                        <h2 class="card-header">Form Fasilitas</h2>
+                        <h2 class="card-header">Form Data Konsumsi</h2>
                         <div class="content-midcontainer" style="width: 50%!important">
                         <div class="form-login">
                             {{ flashSession.output() }}
-                            {{ form('fasilitas/save', 'name': 'fasilitas', 'method': 'post') }}
+                            {{ form('makanan/save', 'name': 'makanan', 'method': 'post') }}
                             
-                                <label for="nama_fasilitas">Nama Fasilitas:</label>
-                                {{ text_field('nama_fasilitas', 'placeholder': 'Masukkan nama fasilitas', 'required') }}
+                                <label for="nama_makanan">Nama Makanan:</label>
+                                {{ text_field('nama_makanan', 'placeholder': 'Masukkan nama makanan', 'required') }}
 
-                                <label for="id_ruangan">Nama Ruangan:</label>
-                                {{ select('id_ruangan', ruangan, 'using': ['id_ruangan', 'nama_ruangan'], 'class': 'form-control col-sm-4', 'style': 'width: 100%; margin: 8px 0px') }}
+                                <label for="id_vendor">Nama Vendor:</label>
+                                {{ select('id_vendor', vendor, 'using': ['id_vendor', 'nama_vendor'], 'class': 'form-control col-sm-4', 'style': 'width: 100%; margin: 8px 0px') }}
 
-                                <label for="spesifikasi">Spesifikasi Fasilitas:</label>
-                                {{ text_field('spesifikasi', 'placeholder': 'Masukkan spesifikasi fasilitas', 'required') }}
+                                <label for="deskripsi_makanan">Deskripsi:</label>
+                                {{ text_field('deskripsi_makanan', 'placeholder': 'Masukkan deskripsi_makanan') }}
 
                                 {{ submit_button('Confirm') }}
 

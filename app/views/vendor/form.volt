@@ -18,9 +18,9 @@
                 </div>
                 <a href="{{ url('/index') }}"><button>Reservasi</button></a>
                 <a href="{{ url('/ruangan') }}"><button>Ruang Rapat</button></a>
-                <a href="{{ url('/fasilitas') }}"><button class="active">Fasilitas</button></a>
+                <a href="{{ url('/fasilitas') }}"><button>Fasilitas</button></a>
                 <a href="{{ url('/makanan') }}"><button>Konsumsi</button></a>
-                <a href="{{ url('/vendor') }}"><button>Vendor</button></a>
+                <a href="{{ url('/vendor') }}"><button class="active">Vendor</button class="active"></a>
                 <div style="bottom: 0px; width: inherit; position: absolute">
                     <form action="{{ url('/index/logout') }}" method="post">
                         <button>Logout</button>
@@ -31,20 +31,23 @@
             <div class="tabcontent">
                 <div class="container">
                     <div class="card">
-                        <h2 class="card-header">Form Fasilitas</h2>
+                        <h2 class="card-header">Form Data Vendor</h2>
                         <div class="content-midcontainer" style="width: 50%!important">
                         <div class="form-login">
                             {{ flashSession.output() }}
-                            {{ form('fasilitas/save', 'name': 'fasilitas', 'method': 'post') }}
+                            {{ form('vendor/save', 'name': 'vendor', 'method': 'post') }}
                             
-                                <label for="nama_fasilitas">Nama Fasilitas:</label>
-                                {{ text_field('nama_fasilitas', 'placeholder': 'Masukkan nama fasilitas', 'required') }}
+                                <label for="nama_vendor">Nama Vendor:</label>
+                                {{ text_field('nama_vendor', 'placeholder': 'Masukkan nama vendor', 'required') }}
 
-                                <label for="id_ruangan">Nama Ruangan:</label>
-                                {{ select('id_ruangan', ruangan, 'using': ['id_ruangan', 'nama_ruangan'], 'class': 'form-control col-sm-4', 'style': 'width: 100%; margin: 8px 0px') }}
+                                <label for="email_vendor">Email Vendor:</label>
+                                {{ text_field('email_vendor', 'placeholder': 'Masukkan email vendor') }}
 
-                                <label for="spesifikasi">Spesifikasi Fasilitas:</label>
-                                {{ text_field('spesifikasi', 'placeholder': 'Masukkan spesifikasi fasilitas', 'required') }}
+                                <label for="alamat_vendor">Alamat Vendor:</label>
+                                {{ text_field('alamat_vendor', 'placeholder': 'Masukkan alamat vendor') }}
+
+                                <label for="no_telp">Nomor Telepon Vendor:</label>
+                                {{ text_field('no_telp', 'placeholder': 'Masukkan nomor telepon vendor') }}
 
                                 {{ submit_button('Confirm') }}
 

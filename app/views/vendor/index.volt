@@ -17,10 +17,10 @@
                     Selamat datang, {{ session.get('login')['username'] }}
                 </div>
                 <a href="{{ url('/index') }}"><button>Reservasi</button></a>
-                <a href="{{ url('/ruangan') }}"><button class="active">Ruang Rapat</button></a>
+                <a href="{{ url('/ruangan') }}"><button>Ruang Rapat</button></a>
                 <a href="{{ url('/fasilitas') }}"><button>Fasilitas</button></a>
                 <a href="{{ url('/makanan') }}"><button>Konsumsi</button></a>
-                <a href="{{ url('/vendor') }}"><button>Vendor</button></a>
+                <a href="{{ url('/vendor') }}"><button class="active">Vendor</button class="active"></a>
                 <div style="bottom: 0px; width: inherit; position: absolute">
                     <form action="{{ url('/index/logout') }}" method="post">
                         <button>Logout</button>
@@ -31,34 +31,29 @@
             <div class="tabcontent">
                 <div class="container">
                     <div class="card">
-                    {% if ruangan is defined %}
-                        <h3 class="card-header">Daftar Ruangan</h3>
+                    {% if vendor is defined %}
+                        <h3 class="card-header">Daftar Vendor</h3>
                         <table class="table table-bordered table-responsive-sm" id="calendar">
                             <thead>
                                 <tr>
-                                    <th> Nama Ruangan </th>
-                                    <th> Lokasi </th>
+                                    <th> Nama Vendor </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for ruang in ruangan %}
+                                {% for vend in vendor %}
                                 <tr>
-                                    {{ form('ruangan/detail', 'method': 'post') }}
+                                    {{ form('vendor/detail', 'method': 'post') }}
                                     <td>
-                                        {{ hidden_field('id_ruangan', 'value': ruang.id_ruangan) }}
-                                        {{ submit_button(ruang.nama_ruangan, 'style': 'all: unset; cursor: pointer') }}
-                                    </td>
-                                    
-                                    <td>
-                                        {{ ruang.lokasi_ruangan }}
+                                        {{ hidden_field('id_vendor', 'value': vend.id_vendor) }}
+                                        {{ submit_button(vend.nama_vendor, 'style': 'all: unset; cursor: pointer') }}
                                     </td>
                                     {{ end_form() }}
                                 </tr> 
                                 {% endfor %}
                             </tbody>
                         </table>
-                        <a href="{{ url('/ruangan/form') }}">
-                            <button class="btn2">Buat Data Ruangan Baru</button>
+                        <a href="{{ url('/vendor/form') }}">
+                            <button class="btn2">Buat Data Vendor Baru</button>
                         </a>
                     </div>
                     {% endif %}
